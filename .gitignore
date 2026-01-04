@@ -1,8 +1,13 @@
 backend/venv/
 backend/.pytest_cache/
 backend/__pycache__/
+.venv/
+**/__pycache__/
+*.pyc
+*.pyo
 .env
 backend/data/
 backend/data/chroma_db/
 backend/data/research_navigator.db
 frontend/node_modules/
+frontend/dist/
