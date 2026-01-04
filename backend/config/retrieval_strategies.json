@@ -1,0 +1,21 @@
+{
+    "fact_checking": [
+        {"collection": "chunks", "multiplier": 5}
+    ],
+    "conceptual_explanation": [
+        {"collection": "chunks", "multiplier": 4},
+        {"collection": "chapter_summaries", "multiplier": 2}
+    ],
+    "literature_review": [
+        {"collection": "summaries", "multiplier": 3},
+        {"collection": "chapter_summaries", "multiplier": 3}
+    ],
+    "comparison": [
+        {"collection": "chunks", "multiplier": 4},
+        {"collection": "summaries", "multiplier": 2}
+    ],
+    "other": [
+        {"collection": "chunks", "multiplier": 5},
+        {"collection": "chapter_summaries", "multiplier": 2}
+    ]
+}

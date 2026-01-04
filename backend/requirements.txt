@@ -1,0 +1,87 @@
+# -- Core Web Framework & Server --
+# FastAPI is the main web framework used for building the API.
+# Uvicorn serves as the ASGI server to run the FastAPI application.
+fastapi
+uvicorn[standard]
+starlette
+h11
+
+# -- Database & ORM --
+# SQLAlchemy is the SQL toolkit and Object-Relational Mapper.
+# Alembic is used for database schema migrations.
+# ChromaDB is the vector store for embeddings.
+SQLAlchemy
+alembic
+chromadb
+# psycopg2-binary # Add this if you are using PostgreSQL
+
+# -- Task Queue --
+# Celery is used for running background tasks asynchronously (e.g., document processing).
+# Redis is the message broker and result backend for Celery.
+# Gevent is used for high-concurrency networking.
+celery[redis]
+redis
+gevent
+
+# -- Observability --
+sentry-sdk
+billiard
+kombu
+vine
+
+# -- Authentication & Security --
+# Passlib and python-jose are used for password hashing and JWT token management.
+passlib[argon2]
+python-jose[cryptography]
+bcrypt
+argon2-cffi
+
+# -- AI, NLP & Data Processing --
+# This section includes libraries for document processing, embeddings, topic modeling, and data analysis.
+unstructured[local-inference]
+sentence-transformers
+bertopic
+pandas
+numpy
+scikit-learn
+torch
+transformers
+huggingface-hub
+openai # Note: This is an older version. Consider upgrading to 1.x.x if needed.
+langchain
+langchain-text-splitters
+langchain-core
+langgraph
+langgraph-checkpoint
+langgraph-prebuilt
+langgraph-sdk
+langsmith
+python-docx
+python-pptx
+safetensors
+scipy
+tokenizers
+torchvision
+unstructured-client
+unstructured-inference
+unstructured.pytesseract
+xlrd
+xlsxwriter
+
+# -- Configuration & Utilities --
+# Pydantic is used for data validation and settings management.
+# python-dotenv handles loading environment variables from .env files.
+pydantic
+pydantic-settings
+python-dotenv
+requests
+email-validator # For Pydantic email validation
+python-multipart
+rich
+shellingham
+typer
+watchfiles
+
+# -- Observability & Monitoring --
+# Prometheus integration for FastAPI metrics
+prometheus-fastapi-instrumentator

@@ -1,0 +1,396 @@
+/* ==========================================================================
+   TDesign 主题定制
+   覆盖 TDesign 默认样式以匹配我们的设计系统
+   ========================================================================== */
+
+/* ==========================================================================
+   TDesign 全局变量覆盖
+   ========================================================================== */
+
+:root {
+  /* 主色调 */
+  --td-brand-color: var(--color-primary);
+  --td-brand-color-1: var(--color-primary-light);
+  --td-brand-color-2: var(--color-primary-alpha);
+  --td-brand-color-3: var(--color-primary-dark);
+  
+  /* 成功色 */
+  --td-success-color: var(--color-success);
+  --td-success-color-1: var(--color-success-light);
+  --td-success-color-2: var(--color-success-alpha);
+  
+  /* 警告色 */
+  --td-warning-color: var(--color-warning);
+  --td-warning-color-1: var(--color-warning-light);
+  --td-warning-color-2: var(--color-warning-alpha);
+  
+  /* 错误色 */
+  --td-error-color: var(--color-error);
+  --td-error-color-1: var(--color-error-light);
+  --td-error-color-2: var(--color-error-alpha);
+  
+  /* 字体 */
+  --td-font-family: var(--font-family-base);
+  --td-font-size-s: var(--font-size-sm);
+  --td-font-size-base: var(--font-size-base);
+  --td-font-size-l: var(--font-size-lg);
+  
+  /* 圆角 */
+  --td-radius-small: var(--radius-sm);
+  --td-radius-medium: var(--radius-md);
+  --td-radius-large: var(--radius-lg);
+  
+  /* 间距 */
+  --td-comp-paddingTB-xs: var(--spacing-1);
+  --td-comp-paddingTB-s: var(--spacing-2);
+  --td-comp-paddingTB-m: var(--spacing-3);
+  --td-comp-paddingTB-l: var(--spacing-4);
+  
+  --td-comp-paddingLR-xs: var(--spacing-2);
+  --td-comp-paddingLR-s: var(--spacing-3);
+  --td-comp-paddingLR-m: var(--spacing-4);
+  --td-comp-paddingLR-l: var(--spacing-6);
+}
+
+/* ==========================================================================
+   按钮组件定制
+   ========================================================================== */
+
+.t-button {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.t-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.t-button--theme-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.t-button--theme-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.t-button--variant-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.t-button--variant-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+}
+
+/* ==========================================================================
+   输入框组件定制
+   ========================================================================== */
+
+.t-input {
+  font-family: var(--font-family-base);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-primary);
+  transition: all var(--transition-fast);
+}
+
+.t-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha);
+}
+
+.t-input__inner {
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+}
+
+.t-input__inner::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* ==========================================================================
+   卡片组件定制
+   ========================================================================== */
+
+.t-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  background-color: var(--bg-primary);
+}
+
+.t-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.t-card__header {
+  border-bottom: 1px solid var(--border-primary);
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-6);
+}
+
+.t-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.t-card__body {
+  padding: var(--spacing-6);
+}
+
+/* ==========================================================================
+   菜单组件定制
+   ========================================================================== */
+
+.t-menu {
+  background-color: transparent;
+  border: none;
+}
+
+.t-menu__item {
+  margin: var(--spacing-1) 0;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  color: var(--text-secondary);
+}
+
+.t-menu__item:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.t-menu__item--active {
+  background-color: var(--color-primary-alpha);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.t-menu__item--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background-color: var(--color-primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* ==========================================================================
+   表格组件定制
+   ========================================================================== */
+
+.t-table {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-primary);
+}
+
+.t-table__header {
+  background-color: var(--bg-secondary);
+}
+
+.t-table th {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.t-table td {
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.t-table tbody tr:hover {
+  background-color: var(--bg-secondary);
+}
+
+/* ==========================================================================
+   下拉菜单定制
+   ========================================================================== */
+
+.t-dropdown__menu {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--bg-primary);
+  padding: var(--spacing-2);
+}
+
+.t-dropdown__item {
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  color: var(--text-primary);
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+.t-dropdown__item:hover {
+  background-color: var(--bg-secondary);
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   头像组件定制
+   ========================================================================== */
+
+.t-avatar {
+  transition: all var(--transition-fast);
+}
+
+.t-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   进度条定制
+   ========================================================================== */
+
+.t-progress {
+  background-color: var(--color-gray-200);
+  border-radius: var(--radius-full);
+}
+
+.t-progress__bar {
+  border-radius: var(--radius-full);
+  transition: width var(--transition-base);
+}
+
+/* ==========================================================================
+   徽章定制
+   ========================================================================== */
+
+.t-badge {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-full);
+}
+
+/* ==========================================================================
+   消息提示定制
+   ========================================================================== */
+
+.t-message {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-primary);
+}
+
+.t-message--theme-success {
+  background-color: var(--color-success-alpha);
+  border-color: var(--color-success);
+  color: var(--color-success-dark);
+}
+
+.t-message--theme-warning {
+  background-color: var(--color-warning-alpha);
+  border-color: var(--color-warning);
+  color: var(--color-warning-dark);
+}
+
+.t-message--theme-error {
+  background-color: var(--color-error-alpha);
+  border-color: var(--color-error);
+  color: var(--color-error-dark);
+}
+
+/* ==========================================================================
+   对话框定制
+   ========================================================================== */
+
+.t-dialog {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-primary);
+}
+
+.t-dialog__header {
+  border-bottom: 1px solid var(--border-primary);
+  padding: var(--spacing-6);
+}
+
+.t-dialog__body {
+  padding: var(--spacing-6);
+}
+
+.t-dialog__footer {
+  border-top: 1px solid var(--border-primary);
+  padding: var(--spacing-4) var(--spacing-6);
+}
+
+/* ==========================================================================
+   加载组件定制
+   ========================================================================== */
+
+.t-loading {
+  color: var(--color-primary);
+}
+
+.t-loading__spinner {
+  border-color: var(--color-gray-300);
+  border-top-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   分页组件定制
+   ========================================================================== */
+
+.t-pagination {
+  gap: var(--spacing-2);
+}
+
+.t-pagination .t-button {
+  border-radius: var(--radius-md);
+  min-width: 40px;
+  height: 40px;
+}
+
+.t-pagination .t-button--variant-text {
+  color: var(--text-secondary);
+  border: 1px solid var(--border-primary);
+}
+
+.t-pagination .t-button--variant-text:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-alpha);
+}
+
+.t-pagination .t-button--theme-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--text-inverse);
+}
+
+/* ==========================================================================
+   响应式调整
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .t-card__header,
+  .t-card__body {
+    padding: var(--spacing-4);
+  }
+  
+  .t-dialog {
+    margin: var(--spacing-4);
+    max-width: calc(100vw - 2rem);
+  }
+  
+  .t-dialog__header,
+  .t-dialog__body,
+  .t-dialog__footer {
+    padding: var(--spacing-4);
+  }
+}
