@@ -14,12 +14,21 @@ class RerankerService:
     def __init__(self):
         try:
             logging.info("Initializing RerankerService...")
-            # Load the Cross-Encoder model from the pre-configured model name
-            self.model = CrossEncoder(settings.CROSS_ENCODER_MODEL_NAME, max_length=512)
+            self.model = self._load_model()
             logging.info(f"RerankerService initialized successfully with model: {settings.CROSS_ENCODER_MODEL_NAME}")
         except Exception as e:
             logging.error(f"Failed to initialize RerankerService model: {e}", exc_info=True)
             self.model = None
+
+    @staticmethod
+    def _load_model():
+        """Load the CrossEncoder model, preferring local cache to avoid HF Hub HTTP probes."""
+        try:
+            logging.info("Loading reranker model from local cache...")
+            return CrossEncoder(settings.CROSS_ENCODER_MODEL_NAME, max_length=512, local_files_only=True)
+        except Exception:
+            logging.info("Model not found locally, downloading from HuggingFace Hub...")
+            return CrossEncoder(settings.CROSS_ENCODER_MODEL_NAME, max_length=512)
 
     def rerank(self, query: str, documents: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """

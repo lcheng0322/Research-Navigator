@@ -14,6 +14,17 @@ from unstructured.partition.auto import partition
 from unstructured.documents.elements import Element, Title, Table
 from langchain_text_splitters import NLTKTextSplitter
 
+# Ensure NLTK punkt tokenizer is available (required by NLTKTextSplitter)
+import nltk
+try:
+    nltk.data.find('tokenizers/punkt_tab')
+except LookupError:
+    nltk.download('punkt_tab', quiet=True)
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt', quiet=True)
+
 from ..models.document import Document, DocumentMetadata
 from .llm_service import get_llm_response
 from . import vector_store_service

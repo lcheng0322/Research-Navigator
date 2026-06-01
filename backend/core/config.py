@@ -33,7 +33,7 @@ class Settings(BaseSettings):
     # --- Model Configuration ---
     # Switched to more powerful BGE models as per the optimization plan.
     EMBEDDING_MODEL_NAME: str = "BAAI/bge-large-en-v1.5"
-    CROSS_ENCODER_MODEL_NAME: str = "BAAI/bge-reranker-large"
+    CROSS_ENCODER_MODEL_NAME: str = "BAAI/bge-reranker-base"
 
     # --- LLM Configuration ---
     # The default values are used if the variable is not found in the .env file.
@@ -57,9 +57,9 @@ class Settings(BaseSettings):
 
     # --- Security & JWT Configuration ---
     # This key is used to sign JWTs. It should be a long, random, and secret string.
-    # CRITICAL: Must be provided via environment variables or .env; no default is set.
+    # CRITICAL: Must be provided via environment variables or .env file.
     # To generate a new secret key, you can use: openssl rand -hex 32
-    SECRET_KEY: str
+    SECRET_KEY: str = "change-me"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 days
 

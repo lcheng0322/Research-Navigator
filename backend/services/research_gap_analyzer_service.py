@@ -4,6 +4,7 @@ import datetime
 import json
 
 from bertopic import BERTopic
+from sentence_transformers import SentenceTransformer
 from sklearn.feature_extraction.text import CountVectorizer
 from celery.result import AsyncResult
 
@@ -40,9 +41,19 @@ class ResearchGapAnalyzerService:
 
         self.vectorizer_model = CountVectorizer(stop_words=stop_words, ngram_range=(1, 3))
         self.topic_model = BERTopic(
-            embedding_model=settings.EMBEDDING_MODEL_NAME,
+            embedding_model=self._load_embedding_model(),
             vectorizer_model=self.vectorizer_model
         )
+
+    @staticmethod
+    def _load_embedding_model():
+        """Load the SentenceTransformer model for BERTopic, preferring local cache."""
+        try:
+            logging.info("Loading BERTopic embedding model from local cache...")
+            return SentenceTransformer(settings.EMBEDDING_MODEL_NAME, local_files_only=True)
+        except Exception:
+            logging.info("Model not found locally, downloading from HuggingFace Hub...")
+            return SentenceTransformer(settings.EMBEDDING_MODEL_NAME)
 
     def trigger_analysis(self, collection_names: Optional[List[str]] = None) -> str:
         """

@@ -29,7 +29,7 @@ class VectorStoreService:
     """
     def __init__(self):
         logger.info("Initializing VectorStoreService...")
-        self.embedding_model = SentenceTransformer(settings.EMBEDDING_MODEL_NAME)
+        self.embedding_model = self._load_embedding_model()
         self.db_client = chromadb.PersistentClient(path=str(settings.CHROMA_PERSIST_DIR))
         
         # Get or create multiple collections for hierarchical search
@@ -40,6 +40,16 @@ class VectorStoreService:
             settings.CHAPTER_SUMMARIES_COLLECTION_NAME: self.db_client.get_or_create_collection(name=settings.CHAPTER_SUMMARIES_COLLECTION_NAME)
         }
         logger.info("VectorStoreService initialized successfully", extra={"collections": list(self.collections.keys())})
+
+    @staticmethod
+    def _load_embedding_model():
+        """Load the SentenceTransformer model, preferring local cache to avoid HF Hub HTTP probes."""
+        try:
+            logger.info("Loading embedding model from local cache...")
+            return SentenceTransformer(settings.EMBEDDING_MODEL_NAME, local_files_only=True)
+        except Exception:
+            logger.info("Model not found locally, downloading from HuggingFace Hub...")
+            return SentenceTransformer(settings.EMBEDDING_MODEL_NAME)
 
     def add_texts(self, texts: list[str], metadatas: list[dict[str, Any]] | None, collection_name: str):
         """

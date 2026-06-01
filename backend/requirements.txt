@@ -85,3 +85,4 @@ watchfiles
 # -- Observability & Monitoring --
 # Prometheus integration for FastAPI metrics
 prometheus-fastapi-instrumentator
+nltk
