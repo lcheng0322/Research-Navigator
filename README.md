@@ -217,10 +217,8 @@ Research-Navigator/
 | Redis | 6+ | 消息队列、缓存、限流 |
 | DeepSeek API Key | — | LLM 推理 |
 
-推荐安装（文档解析增强，非必需）：
+推荐安装（文档解析增强）：
 - **Tesseract OCR** — 扫描版 PDF / 图片 OCR
-- **Poppler** — 复杂 PDF 页面渲染
-- **LibreOffice** — 复杂 Office 文档兼容
 
 ### 1. 准备 Redis
 
